@@ -1,3 +1,6 @@
 [submodule "postgresqlProject"]
 	path = postgresqlProject
 	url = git@github.com:Anastasy-ya/postgresqlProject.git
+[submodule "history-log-users-server"]
+	path = history-log-users-server
+	url = git@github.com:Anastasy-ya/history-log-users-server.git
