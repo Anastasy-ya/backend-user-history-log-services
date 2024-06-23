@@ -1,0 +1,3 @@
+[submodule "postgresqlProject"]
+	path = postgresqlProject
+	url = git@github.com:Anastasy-ya/postgresqlProject.git
