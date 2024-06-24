@@ -130,13 +130,13 @@ git submodule update
 ```
 npm install
 ```
-5. Запустить проект:
+5. Запустить проект в каждой подпапке:
 ```
 npm build 
 npm start
 ```
 
-## Проверка
+## Проверка postgresqlProject
 
 ### get users:
 
@@ -174,6 +174,11 @@ PATCH http://localhost:5432/update-user?id=200
 ### 404:
 
 GET http://localhost:5432/sdfg
+
+## Проверка history-log-users-server
+
+
+
 
 ## Планы по улучшению:
  - Написать тесты
