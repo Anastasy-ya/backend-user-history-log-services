@@ -37,6 +37,8 @@ https://github.com/Anastasy-ya/BigDB/blob/main/servers.postman_collection.json
 
 ## postgresqlProject
 
+JavaScript - Express.js - cors - node-postgres - express-rate-limit
+
 ### Ссылка:
 1.https://github.com/Anastasy-ya/postgresqlProject
 <br>
@@ -85,6 +87,8 @@ GET http://localhost:5432/sdfg
 
 ## history-log-users-server
 
+TypeScript - Express.js - cors - node-postgres - express-rate-limit
+
 ### Ссылка:
 https://github.com/Anastasy-ya/history-log-users-server
 <br>
@@ -105,6 +109,9 @@ GET http://localhost:5432/sdfg
 
 
 ## bigDB
+
+TypeScript - Nest.js - TypeORM - node-postgres
+
 _Работает с базой данных с 1млн + записей._
 _Возвраащает количество пользователей с Problems: true и меняет флаг на false_
 
