@@ -1,38 +1,40 @@
+*Read this in [Russian](README.rus.md)*
+
 # backend-user-history-log-services
-_Изучение облачной базы данных и синтаксиса postgresql_
+_Learning postgresql_
 
-## Используется облачная база данных postgresql neon.tech
+## Postgresql neon.tech data base is using
 
-## Запуск
+## Running
 
-1. Склонировать репозиторий:
+1. Clone:
 ```
 git clone git@github.com:Anastasy-ya/backend-user-history-log-services.git
 ```
 
-2. Перейти в папку проекта
+2. Navigate to folder
 ```
 cd backend-user-history-log-services
 ```
 
-3. Инициализировать и обновить подмодули:
+3. To initialize and update submodules:
 ```
 git submodule init
 git submodule update
 ```
 
-4. Перейти в каждую подпапку, установить зависимости:
+4. To navigate to each subfolder and install dependencies:
 ```
 npm install
 ```
-5. Запустить проект в каждой подпапке:
+5. To run the project in each subfolder:
 ```
 git pull origin main
-npm run build (кроме postgresqlProject)
+npm run build (except postgresqlProject)
 npm run start
 ```
 
-## Коллекция POSTMAN для тестирования 
+## POSTMAN collection for testing 
 https://github.com/Anastasy-ya/BigDB/blob/main/servers.postman_collection.json
 
 ## postgresqlProject
@@ -42,9 +44,9 @@ JavaScript - Express.js - cors - node-postgres - express-rate-limit
 ### Ссылка:
 1.https://github.com/Anastasy-ya/postgresqlProject
 <br>
-_Работает с таблицей persons возвращает список пользователей,_
-_создает нового или изменяет существующего,_
-_отправляя лог изменений в <person_changes>_
+_Works with the table <persons> returning a list of users,
+creates a new one or updates an existing one,
+sending the change log to <person_changes>_
 
 
 ### get users:
@@ -92,8 +94,8 @@ TypeScript - Express.js - cors - node-postgres - express-rate-limit
 ### Ссылка:
 https://github.com/Anastasy-ya/history-log-users-server
 <br>
-_Работает с таблицей <person_changes>_
-_и возвращает историю изменения таблицы <persons>_
+_Works with the table <person_changes>_
+_and returns the change history of the <persons> table_
 
 ### get users:
 
@@ -112,13 +114,12 @@ GET http://localhost:5432/sdfg
 
 TypeScript - Nest.js - TypeORM - node-postgres
 
-_Работает с базой данных с 1млн + записей._
-_Возвраащает количество пользователей с Problems: true и меняет флаг на false_
+_Works with a database containing over 1 million records._
+_Returns the count of users with Problems: true and changes the flag to false._
 
 ### Ссылка:
 1.https://github.com/Anastasy-ya/BigDB
 <br>
-
 
 ### reset problems:
 
@@ -129,12 +130,7 @@ PATCH http://localhost:3000/users/reset-problems
 GET http://localhost:3000/404
 
 
-## Планы по улучшению:
- - Написать тесты
- - Рефакторинг
- - Валидация входных значений при помощи express-validator
-
-_Для подключения необходим .env файл в корневой директории приложения:_
+The .env file is required in the root directory of the application for the connection:
 
 ```
 USER=<your_login>
@@ -149,7 +145,7 @@ PORT=5432
 ```
 
 
-Строка, содержащая данные для подключения, располагается в Dashboard панели управления
+The connection string is located in the Dashboard control panel
 
 ```
 postgres://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname
@@ -160,12 +156,12 @@ postgres://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname
 
 ```
 
-[Документация](https://neon.tech/docs/get-started-with-neon/connect-neon "Переход на сайт neon.tech")
+[Docs](https://neon.tech/docs/get-started-with-neon/connect-neon "Переход на сайт neon.tech")
 
-### Скрипт для создания SQL-таблицы и заполнения ее рандомными значениями: 
+### The script to create an SQL table and populate it with random values: 
 
 ```
--- Создание таблицы users
+-- Create table users
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name CHAR(3) NOT NULL,
@@ -175,7 +171,7 @@ CREATE TABLE users (
     problems BOOLEAN
 );
 
--- Функция для генерации случайной строки заданной длины
+-- The function to generate a random string.
 CREATE OR REPLACE FUNCTION random_string(length INT) RETURNS TEXT AS $$
 DECLARE
     result TEXT := '';
@@ -188,28 +184,28 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Функция для генерации случайного возраста
+-- The function to generate a random age.
 CREATE OR REPLACE FUNCTION random_age() RETURNS INT AS $$
 BEGIN
     RETURN FLOOR(RANDOM() * 83) + 18;
 END;
 $$ LANGUAGE plpgsql;
 
--- Функция для генерации случайного пола
+-- The function to generate a random gender.
 CREATE OR REPLACE FUNCTION random_gender() RETURNS CHAR(1) AS $$
 BEGIN
     RETURN CASE WHEN RANDOM() < 0.5 THEN 'm' ELSE 'f' END;
 END;
 $$ LANGUAGE plpgsql;
 
--- Функция для генерации случайного значения для проблемы
+-- The function to generate a random value for a problem
 CREATE OR REPLACE FUNCTION random_problems() RETURNS BOOLEAN AS $$
 BEGIN
     RETURN RANDOM() < 0.5;
 END;
 $$ LANGUAGE plpgsql;
 
--- Функция для вставки случайного пользователя
+-- The function to insert a random user
 CREATE OR REPLACE FUNCTION insert_random_person(num_users INT) RETURNS VOID AS $$
 DECLARE
     i INT;
@@ -221,11 +217,11 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Вставка пользователей
+-- insert users
 SELECT insert_random_person(1000);
 ```
 
-### Cкрипт для создания связанной таблицы с историей изменения первой таблицы
+### The script to create a related table that tracks the change history of the primary table
 
 ```
 CREATE TABLE user_changes (
