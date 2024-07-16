@@ -132,19 +132,31 @@ npm install
 ```
 5. Запустить проект в каждой подпапке:
 ```
-npm build 
-npm start
+git pull origin main
+npm run build (кроме postgresqlProject)
+npm run start
 ```
 
-## Проверка postgresqlProject
+## Коллекция POSTMAN для тестирования 
+https://github.com/Anastasy-ya/BigDB/blob/main/servers.postman_collection.json
+
+## postgresqlProject
+
+### Ссылка:
+1.https://github.com/Anastasy-ya/postgresqlProject
+<br>
+_Работает с таблицей persons возвращает список пользователей,_
+_создает нового или изменяет существующего,_
+_отправляя лог изменений в <person_changes>_
+
 
 ### get users:
 
-GET http://localhost:5432
+GET http://localhost:3001
 
 ### create user:
 
-POST http://localhost:5432/create-user
+POST http://localhost:3001/create-user
 <br>
 ```
 {
@@ -159,7 +171,7 @@ POST http://localhost:5432/create-user
 ### change user:
 _id required_
 
-PATCH http://localhost:5432/update-user?id=200
+PATCH http://localhost:3001/update-user?id=200
 <br>
 ```
 {
@@ -175,9 +187,44 @@ PATCH http://localhost:5432/update-user?id=200
 
 GET http://localhost:5432/sdfg
 
-## Проверка history-log-users-server
+
+## history-log-users-server
+
+### Ссылка:
+https://github.com/Anastasy-ya/history-log-users-server
+<br>
+_Работает с таблицей <person_changes>_
+_и возвращает историю изменения таблицы <persons>_
+
+### get users:
+
+GET http://localhost:5432
+
+### get one user:
+
+GET http://localhost:5432/user?id=200
+
+### 404:
+
+GET http://localhost:5432/sdfg
 
 
+## bigDB
+_Работает с базой данных с 1млн + записей._
+_Возвраащает количество пользователей с Problems: true и меняет флаг на false_
+
+### Ссылка:
+1.https://github.com/Anastasy-ya/BigDB
+<br>
+
+
+### reset problems:
+
+PATCH http://localhost:3000/users/reset-problems
+
+### 404:
+
+GET http://localhost:3000/404
 
 
 ## Планы по улучшению:
